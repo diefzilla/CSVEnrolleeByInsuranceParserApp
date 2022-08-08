@@ -5,8 +5,15 @@ using System.Text;
 string sampleCSV = @"sample.csv";
 string sortedCSV = @"results.csv";
 
+if (!File.Exists(sampleCSV))
+{
+    Console.WriteLine($"Please copy sample.csv to the {Environment.CurrentDirectory} folder.");
+    Environment.Exit(0);
+}
+
 //Split the lines of the CSV file into an array of strings
 string[] dataLines = File.ReadAllText(sampleCSV).Split('\n');
+
 
 //Sort the lines to put the Enrollees into the corrosponding Insurance Companies
 foreach (string line in dataLines.Skip(1)) //Skip the line with the column names.
